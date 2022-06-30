@@ -22,6 +22,8 @@ jobs:
           make install
       - name: Run tests
         run: make check
+        env:
+          DB_ENGINE: SQLite
       - name: Publish code coverage report
         uses: paambaati/codeclimate-action@v3.0.0
         env:

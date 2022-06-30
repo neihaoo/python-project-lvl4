@@ -1,6 +1,6 @@
 """Task Manager View Module."""
 
-from django.views.generic.base import TemplateView
+from django.views.generic import TemplateView
 
 
 class IndexView(TemplateView):

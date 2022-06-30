@@ -35,7 +35,6 @@ DEBUG = os.getenv('DEBUG', 'true').lower() in {'yes', '1', 'true'}
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '[::1]',
     'webserver',
     '.herokuapp.com',
 ]
@@ -50,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap4',
     'task_manager',
 ]
 
