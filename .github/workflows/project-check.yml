@@ -23,7 +23,8 @@ jobs:
       - name: Run tests
         run: make check
         env:
-          DB_ENGINE: SQLite
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
       - name: Publish code coverage report
         uses: paambaati/codeclimate-action@v3.0.0
         env:

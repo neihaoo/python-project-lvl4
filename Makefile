@@ -1,34 +1,45 @@
-install:
-	poetry install
+.env:
+	@cp -n .env.example .env || true
+
+install: .env
+	@poetry install
+
+migrate:
+	@poetry run python manage.py migrate
+
+setup: install migrate
+
+shell:
+	@poetry run python manage.py shell
 
 lint:
-	poetry run flake8 task_manager
+	@poetry run flake8 .
 
 test:
-	poetry run coverage run manage.py test
+	@poetry run coverage run --source='.' manage.py test
 
 test-coverage-report: test
-	poetry run coverage report -m
-	poetry run coverage erase
+	@poetry run coverage report -m
+	@poetry run coverage erase
 
 test-coverage-report-xml:
-	poetry run coverage xml
-
-selfcheck:
-	poetry check
-
-check: selfcheck lint test 
+	@poetry run coverage xml
 
 start:
-	poetry run python manage.py runserver 0.0.0.0:8000
+	@poetry run python manage.py runserver $(ARGS)
 
 secret_key:
-	poetry run python -c 'from django.core.management import utils; print(utils.get_random_secret_key())'
+	@poetry run python -c 'from django.core.management import utils; print(utils.get_random_secret_key())'
 
 requirements.txt:
-	poetry export -f requirements.txt -o requirements.txt --extras psycopg2
+	@poetry export -f requirements.txt -o requirements.txt -E psycopg2 -E gunicorn
+
+selfcheck:
+	@poetry check
+
+check: selfcheck lint test requirements.txt
 
 deploy: check
 	git push heroku main
 
-.PHONY: install lint test check requirements.txt deploy
+.PHONY: install setup lint test check start

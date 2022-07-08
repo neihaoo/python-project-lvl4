@@ -2,30 +2,69 @@
 {% load i18n static %}
 {% get_current_language as LANGUAGE_CODE %}
 
+{% translate "Task Manager" as title %}
+
 <!doctype html>
 <html lang="{{ LANGUAGE_CODE }}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{% translate "Task Manager" %}</title>
+    <title>{{ title }}</title>
+    {% bootstrap_javascript jquery=True %}
     {% bootstrap_css %}
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
   </head>
   <body>
     
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-      <h5 class="my-0 mr-md-auto font-weight-normal">{% translate "Task Manager" %}</h5>
+      {% url 'index' as index_url %}
+      {% if request.path == index_url %}
+        <h5 class="my-0 mr-md-auto font-weight-normal">{{ title }}</h5>
+      {% else %}
+        <a class="mr-md-auto text-body" href="{{ index_url }}">
+          <h5 class="my-0 font-weight-normal">{{ title }}</h5>
+        </a>
+      {% endif %}
       <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="#">{% translate "Users" %}</a>
+        {% url 'users:index' as users_url %}
+        {% if request.path == users_url %}
+          <p class="p-2 m-0 text-dark">{% translate "Users" %}</p>
+        {% else %}
+          <a class="p-2 text-dark" href="{{ users_url }}">{% translate "Users" %}</a>
+        {% endif %}
       </nav>
-      <a class="btn" href="#">{% translate "Login" %}</a>
-      <a class="btn" href="#">{% translate "Registration" %}</a>
+      {% if user.is_authenticated %}
+        <form method="POST" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <button class="btn btn-link">{% translate "Logout" %}</button>
+        </form>
+      {% else %}
+        <a class="p-2 text-primary" href="{% url 'login' %}">{% translate "Login" %}</a>
+        <a class="p-2 text-primary" href="{% url 'users:create' %}">{% translate "Registration" %}</a>
+      {% endif %}
     </div>
-
-    {% block header %}
-    {% endblock %}
-
+    
     <div class="container">
+      {% bootstrap_messages %}
+
+      {% block header %}
+      {% endblock %}
 
       {% block content %}
       {% endblock %}
@@ -33,36 +72,7 @@
       <footer class="pt-4 my-md-5 pt-md-5 border-top">
         <div class="row">
           <div class="col-12 col-md">
-            <small class="d-block mb-3 text-muted">&copy; 2022</small>
-          </div>
-          <div class="col-6 col-md">
-            <h5>Features</h5>
-            <ul class="list-unstyled text-small">
-              <li><a class="text-muted" href="#">Cool stuff</a></li>
-              <li><a class="text-muted" href="#">Random feature</a></li>
-              <li><a class="text-muted" href="#">Team feature</a></li>
-              <li><a class="text-muted" href="#">Stuff for developers</a></li>
-              <li><a class="text-muted" href="#">Another one</a></li>
-              <li><a class="text-muted" href="#">Last time</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md">
-            <h5>Resources</h5>
-            <ul class="list-unstyled text-small">
-              <li><a class="text-muted" href="#">Resource</a></li>
-              <li><a class="text-muted" href="#">Resource name</a></li>
-              <li><a class="text-muted" href="#">Another resource</a></li>
-              <li><a class="text-muted" href="#">Final resource</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md">
-            <h5>About</h5>
-            <ul class="list-unstyled text-small">
-              <li><a class="text-muted" href="#">Team</a></li>
-              <li><a class="text-muted" href="#">Locations</a></li>
-              <li><a class="text-muted" href="#">Privacy</a></li>
-              <li><a class="text-muted" href="#">Terms</a></li>
-            </ul>
+            <small class="d-block mb-3 text-muted">&copy; {% now "Y" %}</small>
           </div>
         </div>
       </footer>
