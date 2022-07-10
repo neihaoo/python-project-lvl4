@@ -1,4 +1,4 @@
-"""Users URL Configuration."""
+"""Application URL Configuration."""
 
 from django.urls import path
 from users.views import (

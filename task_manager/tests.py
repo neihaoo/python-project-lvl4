@@ -1,14 +1,14 @@
-"""Task Manager tests."""
+"""Project tests."""
 
 from http import HTTPStatus
 
 from django.test import TestCase
 from django.urls import reverse
-from task_manager.view import IndexView
+from task_manager.views import IndexView
 
 
 class TaskManagerTest(TestCase):
-    """Test Task Manager views."""
+    """Project tests."""
 
     def test_index_page(self):
         response = self.client.get(reverse('index'))

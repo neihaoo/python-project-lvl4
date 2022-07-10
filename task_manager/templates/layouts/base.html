@@ -12,23 +12,6 @@
     <title>{{ title }}</title>
     {% bootstrap_javascript jquery=True %}
     {% bootstrap_css %}
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
   </head>
   <body>
     
@@ -46,7 +29,15 @@
         {% if request.path == users_url %}
           <p class="p-2 m-0 text-dark">{% translate "Users" %}</p>
         {% else %}
-          <a class="p-2 text-dark" href="{{ users_url }}">{% translate "Users" %}</a>
+          <a class="p-2 m-0 text-dark" href="{{ users_url }}">{% translate "Users" %}</a>
+        {% endif %}
+        {% if user.is_authenticated %}
+          {% url 'statuses:index' as statuses_url %}
+          {% if request.path == statuses_url %}
+            <p class="p-2 m-0 text-dark">{% translate "Statuses" %}</p>
+          {% else %}
+            <a class="p-2 m-0 text-dark" href="{{ statuses_url }}">{% translate "Statuses" %}</a>
+          {% endif %}
         {% endif %}
       </nav>
       {% if user.is_authenticated %}
@@ -62,9 +53,6 @@
     
     <div class="container">
       {% bootstrap_messages %}
-
-      {% block header %}
-      {% endblock %}
 
       {% block content %}
       {% endblock %}

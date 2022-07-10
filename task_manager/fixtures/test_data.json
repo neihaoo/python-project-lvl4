@@ -1,0 +1,27 @@
+{
+  "users": {
+    "new_user": {
+      "password": "jfsoi3j3",
+      "username": "ted",
+      "first_name": "Ted",
+      "last_name": "Lasso"
+    },
+    "existing_user": {
+      "password": "22okt84y",
+      "username": "luffy",
+      "first_name": "Luffy",
+      "last_name": "D. Monkey"
+    },
+    "another_user": {
+      "password": "22okt84y",
+      "username": "nami",
+      "first_name": "Nami",
+      "last_name": ""
+    }
+  },
+  "statuses": {
+    "new_status": { "name": "Testing" },
+    "existing_status": { "name": "Completed" },
+    "another_status": { "name": "New" }
+  }
+}
