@@ -40,6 +40,12 @@
             {% else %}
               <a class="nav-link p-2" href="{{ statuses_url }}">{% translate "Statuses" %}</a>
             {% endif %}
+            {% url 'labels:index' as labels_url %}
+            {% if request.path == labels_url %}
+              <p class="nav-link active mb-0 p-2">{% translate "Labels" %}</p>
+            {% else %}
+              <a class="nav-link p-2" href="{{ labels_url }}">{% translate "Labels" %}</a>
+            {% endif %}
             {% url 'tasks:index' as tasks_url %}
             {% if request.path == tasks_url %}
               <p class="nav-link active mb-0 p-2">{% translate "Tasks" %}</p>

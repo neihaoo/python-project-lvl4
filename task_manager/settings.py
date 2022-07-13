@@ -30,6 +30,7 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
 INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'statuses.apps.StatusesConfig',
+    'labels.apps.LabelsConfig',
     'tasks.apps.TasksConfig',
     'django.contrib.admin',
     'django.contrib.auth',

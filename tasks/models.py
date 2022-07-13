@@ -1,6 +1,7 @@
 """Tasks application models."""
 
 from django.db import models
+from labels.models import Label
 from statuses.models import Status
 from users.models import User
 
@@ -18,6 +19,11 @@ class Task(models.Model):
         blank=True,
         related_name='executor',
     )
+    labels = models.ManyToManyField(
+        Label,
+        through='TaskLinkToLabel',
+        blank=True,
+    )
     created_by = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
@@ -28,3 +34,10 @@ class Task(models.Model):
     def __str__(self):
         """Represent the model as a string."""
         return self.name
+
+
+class TaskLinkToLabel(models.Model):
+    """Intermediary model."""
+
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    label = models.ForeignKey(Label, on_delete=models.PROTECT)

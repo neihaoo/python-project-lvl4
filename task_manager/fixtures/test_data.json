@@ -7,48 +7,56 @@
       "last_name": "Lasso"
     },
     "existing_user": {
-      "password": "22okt84y",
+      "password": "c&f6N57r",
       "username": "luffy",
       "first_name": "Luffy",
       "last_name": "D. Monkey"
     },
     "another_user": {
-      "password": "22okt84y",
+      "password": "71s1@nUS",
       "username": "chopper",
       "first_name": "Chopper",
       "last_name": ""
     },
     "task_user": {
-      "password": "22okt84y",
+      "password": "99#2zIJe",
       "username": "nami",
       "first_name": "Nami",
       "last_name": ""
     }
   },
   "statuses": {
-    "new_status": { "name": "Dropped" },
-    "existing_status": { "name": "Completed" },
-    "another_status": { "name": "On Testing" }
+    "new_status": {
+      "name": "Dropped"
+    },
+    "existing_status": {
+      "name": "Completed"
+    },
+    "another_status": {
+      "name": "On Testing"
+    }
+  },
+  "labels": {
+    "new_label": {
+      "name": "invalid"
+    },
+    "existing_label": {
+      "name": "question"
+    },
+    "another_label": {
+      "name": "bug"
+    }
   },
   "tasks": {
     "new_task": {
       "name": "Testing",
-      "status": 2,
-      "executor": 1,
-      "created_by": 2
+      "status": 2
     },
     "existing_task": {
-      "name": "Add task tests",
-      "description": "Add CRUD tests for tasks.",
-      "status": 2,
-      "executor": 1,
-      "created_by": 2
+      "name": "Add task tests"
     },
     "another_task": {
-      "name": "Add permission",
-      "description": "Add permission for tasks CRUD.",
-      "status": 3,
-      "created_by": 3
+      "name": "Add permission"
     }
   }
 }
