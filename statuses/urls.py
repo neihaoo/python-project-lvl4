@@ -1,4 +1,4 @@
-"""Application URL Configuration."""
+"""Statuses application URL Configuration."""
 
 from django.urls import path
 from statuses.views import (

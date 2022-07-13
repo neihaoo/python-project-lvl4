@@ -1,0 +1,39 @@
+{% extends 'layouts/base.html' %}
+{% load i18n %}
+
+{% block content %}
+  <h1 class="h1 my-4">{% translate "Tasks" %}</h1>
+  <a href="{% url 'tasks:create' %}">{% translate "Create a task" %}</a>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">{% translate "Name" %}</th>
+          <th scope="col">{% translate "Status" %}</th>
+          <th scope="col">{% translate "Author" %}</th>
+          <th scope="col">{% translate "Executor" %}</th>
+          <th scope="col">{% translate "Creation date" %}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for task in task_list %}
+        <tr>
+          <th scope="row">{{ task.id }}</th>
+          <td>{{ task.name }}</td>
+          <td>{{ task.status }}</td>
+          <td>{{ task.created_by }}</td>
+          <td>{% if task.executor %}{{ task.executor }}{% endif %}</td>
+          <td>{{ task.created_at }}</td>
+          <td>
+            <a href="{% url 'tasks:update' task.id  %}">{% translate "Change" %}</a>
+            <br>
+            <a href="{% url 'tasks:delete' task.id  %}">{% translate "Delete" %}</a>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

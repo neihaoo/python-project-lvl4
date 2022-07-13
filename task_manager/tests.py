@@ -1,17 +1,17 @@
-"""Project tests."""
+"""Task manager project tests."""
 
 from http import HTTPStatus
 
 from django.test import TestCase
-from django.urls import reverse
+from django.urls import reverse_lazy
 from task_manager.views import IndexView
 
 
 class TaskManagerTest(TestCase):
-    """Project tests."""
+    """Task manager tests."""
 
     def test_index_page(self):
-        response = self.client.get(reverse('index'))
+        response = self.client.get(reverse_lazy('index'))
 
         self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertTemplateUsed(response, 'index.html')

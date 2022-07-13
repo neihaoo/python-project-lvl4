@@ -1,4 +1,4 @@
-"""Application configuration."""
+"""Statuses application configuration."""
 
 from django.apps import AppConfig
 

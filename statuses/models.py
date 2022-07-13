@@ -1,10 +1,10 @@
-"""Application models."""
+"""Statuses application models."""
 
 from django.db import models
 
 
 class Status(models.Model):
-    """Status application model."""
+    """Status model."""
 
     name = models.CharField(max_length=100, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)

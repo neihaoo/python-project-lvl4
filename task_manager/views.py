@@ -1,4 +1,4 @@
-"""Task Manager View Module."""
+"""Task manager project views."""
 
 from django.views.generic import TemplateView
 

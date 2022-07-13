@@ -14,14 +14,41 @@
     },
     "another_user": {
       "password": "22okt84y",
+      "username": "chopper",
+      "first_name": "Chopper",
+      "last_name": ""
+    },
+    "task_user": {
+      "password": "22okt84y",
       "username": "nami",
       "first_name": "Nami",
       "last_name": ""
     }
   },
   "statuses": {
-    "new_status": { "name": "Testing" },
+    "new_status": { "name": "Dropped" },
     "existing_status": { "name": "Completed" },
-    "another_status": { "name": "New" }
+    "another_status": { "name": "On Testing" }
+  },
+  "tasks": {
+    "new_task": {
+      "name": "Testing",
+      "status": 2,
+      "executor": 1,
+      "created_by": 2
+    },
+    "existing_task": {
+      "name": "Add task tests",
+      "description": "Add CRUD tests for tasks.",
+      "status": 2,
+      "executor": 1,
+      "created_by": 2
+    },
+    "another_task": {
+      "name": "Add permission",
+      "description": "Add permission for tasks CRUD.",
+      "status": 3,
+      "created_by": 3
+    }
   }
 }

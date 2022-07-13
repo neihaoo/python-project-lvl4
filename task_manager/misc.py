@@ -1,10 +1,11 @@
-"""Project misc utilites."""
-
+"""Task manager project misc utilites."""
 
 import json
 import os
 
-DIR_PATH = os.path.join('..', os.path.dirname(__file__))
+from django.contrib.messages import get_messages
+
+DIR_PATH = os.path.dirname(__file__)
 
 
 def get_fixture_path(filename):
@@ -21,3 +22,10 @@ def read_file(filename):
 def get_test_data():
     """Return parsed file."""
     return json.loads(read_file('test_data.json'))
+
+
+def get_response_messages(response):
+    """Read response and return messages."""
+    return [
+        messages.message for messages in get_messages(response.wsgi_request)
+    ]

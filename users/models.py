@@ -1,4 +1,4 @@
-"""Users models."""
+"""Users application models."""
 
 from django.contrib.auth.models import AbstractUser
 

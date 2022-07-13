@@ -1,67 +1,85 @@
-"""Application views."""
+"""Statuses application views."""
 
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from statuses.forms import StatusForm
 from statuses.models import Status
+from task_manager.mixins import ProtectedErrorMixin, UserLoginRequiredMixin
+from users.views import LOGIN_REQUIRED_MESSAGE
 
-LOGIN_URL = 'login'
+CREATION_SUCCESS_MESSAGE = _('Status successfully created')
+UPDATE_SUCCESS_MESSAGE = _('Status successfully changed')
+DELETE_SUCCESS_MESSAGE = _('Status successfully deleted')
 
-status_messages = {
-    'creation_success': _('Status successfully created'),
-    'update_success': _('Status successfully changed'),
-    'delete_success': _('Status successfully deleted'),
-}
+PROTECTED_ERROR_MESSAGE = _('Unable to delete status because it is in use')
 
 
-class IndexView(LoginRequiredMixin, ListView):
+class IndexView(UserLoginRequiredMixin, ListView):
     """Statuses page view."""
 
     model = Status
-    login_url = reverse_lazy(LOGIN_URL)
+    login_url = reverse_lazy('login')
+    login_required_message = LOGIN_REQUIRED_MESSAGE
 
 
-class StatusCreationView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class StatusCreationView(
+    UserLoginRequiredMixin,
+    SuccessMessageMixin,
+    CreateView,
+):
     """Status creation page view."""
 
     model = Status
     form_class = StatusForm
     template_name = 'layouts/form.html'
-    login_url = reverse_lazy(LOGIN_URL)
+    login_url = reverse_lazy('login')
     success_url = reverse_lazy('statuses:index')
-    success_message = status_messages['creation_success']
+    login_required_message = LOGIN_REQUIRED_MESSAGE
+    success_message = CREATION_SUCCESS_MESSAGE
     extra_context = {
         'header': _('Create a status'),
         'button': _('Create'),
     }
 
 
-class StatusUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class StatusUpdateView(
+    UserLoginRequiredMixin,
+    SuccessMessageMixin,
+    UpdateView,
+):
     """Update status page view."""
 
     model = Status
     form_class = StatusForm
     template_name = 'layouts/form.html'
-    login_url = reverse_lazy(LOGIN_URL)
+    login_url = reverse_lazy('login')
     success_url = reverse_lazy('statuses:index')
-    success_message = status_messages['update_success']
+    login_required_message = LOGIN_REQUIRED_MESSAGE
+    success_message = UPDATE_SUCCESS_MESSAGE
     extra_context = {
         'header': _('Changing status'),
         'button': _('Change'),
     }
 
 
-class StatusDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
-    """Delete user page view."""
+class StatusDeleteView(
+    UserLoginRequiredMixin,
+    ProtectedErrorMixin,
+    SuccessMessageMixin,
+    DeleteView,
+):
+    """Delete status page view."""
 
     model = Status
     template_name = 'delete.html'
-    login_url = reverse_lazy(LOGIN_URL)
+    login_url = reverse_lazy('login')
     success_url = reverse_lazy('statuses:index')
-    success_message = status_messages['delete_success']
+    protected_error_url = reverse_lazy('statuses:index')
+    login_required_message = LOGIN_REQUIRED_MESSAGE
+    success_message = DELETE_SUCCESS_MESSAGE
+    protected_error_message = PROTECTED_ERROR_MESSAGE
     extra_context = {
         'header': _('Status deletion'),
         'button': _('Yes, delete'),
