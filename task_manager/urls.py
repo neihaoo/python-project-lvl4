@@ -2,6 +2,7 @@
 
 from django.contrib import admin
 from django.urls import include, path
+
 from task_manager.views import IndexView
 from users.views import UserLoginView, UserLogoutView
 

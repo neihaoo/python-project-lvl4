@@ -1,6 +1,7 @@
 """Statuses application URL Configuration."""
 
 from django.urls import path
+
 from statuses.views import (
     IndexView,
     StatusCreationView,

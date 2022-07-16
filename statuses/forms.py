@@ -1,6 +1,7 @@
 """Statuses application forms."""
 
 from django.forms import ModelForm
+
 from statuses.models import Status
 
 

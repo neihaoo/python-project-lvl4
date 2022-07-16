@@ -15,7 +15,7 @@
   </head>
   <body>
     
-    <header class="container navbar navbar-light navbar-expand-lg border-bottom align-items-center py-lg-3 mb-4 shadow-sm">
+    <header class="navbar navbar-light navbar-expand-lg sticky-top bg-white border-bottom align-items-center py-lg-3 mb-4 shadow-sm">
       {% url 'index' as index_url %}
       {% if request.path == index_url %}
         <p class="navbar-brand active mb-0 p-2">{{ title }}</p>
@@ -78,20 +78,20 @@
       </div>
       </header>
     
-    <div class="container">
+    <main class="container">
       {% bootstrap_messages %}
 
       {% block content %}
       {% endblock %}
+    </main>
 
-      <footer class="pt-4 my-md-5 pt-md-5 border-top">
-        <div class="row">
-          <div class="col-12 col-md">
-            <small class="d-block mb-3 text-muted">&copy; {% now "Y" %}</small>
-          </div>
+    <footer class="container pt-4 my-md-5 pt-md-5 border-top">
+      <div class="row">
+        <div class="col-12 col-md">
+          <small class="d-block mb-3 text-muted">&copy; {% now "Y" %}</small>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
 
   </body>
 </html>

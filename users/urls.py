@@ -1,12 +1,8 @@
 """Users application URL Configuration."""
 
 from django.urls import path
-from users.views import (
-    IndexView,
-    UserCreationView,
-    UserDeleteView,
-    UserUpdateView,
-)
+
+from users.views import IndexView, UserCreationView, UserDeleteView, UserUpdateView
 
 app_name = 'users'
 

@@ -1,6 +1,7 @@
 """Labels application admin interface."""
 
 from django.contrib import admin
+
 from labels.models import Label
 
 

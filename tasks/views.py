@@ -4,16 +4,17 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+
 from task_manager.mixins import NoPermissionMixin, UserLoginRequiredMixin
 from tasks.forms import TaskForm
 from tasks.models import Task
 from users.views import LOGIN_REQUIRED_MESSAGE
 
-CREATION_SUCCESS_MESSAGE = _('Task successfully created')
-UPDATE_SUCCESS_MESSAGE = _('Task successfully changed')
-DELETE_SUCCESS_MESSAGE = _('Task successfully deleted')
+CREATION_SUCCESS_MESSAGE = _('Task successfully created.')
+UPDATE_SUCCESS_MESSAGE = _('Task successfully changed.')
+DELETE_SUCCESS_MESSAGE = _('Task successfully deleted.')
 
-PERMISSION_DENIED_MESSAGE = _('Only the author of the task can delete it')
+PERMISSION_DENIED_MESSAGE = _('Only the author of the task can delete it.')
 
 
 class IndexView(UserLoginRequiredMixin, ListView):

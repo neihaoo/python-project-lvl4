@@ -1,12 +1,8 @@
 """Labels application URL Configuration."""
 
 from django.urls import path
-from labels.views import (
-    IndexView,
-    LabelCreationView,
-    LabelDeleteView,
-    LabelUpdateView,
-)
+
+from labels.views import IndexView, LabelCreationView, LabelDeleteView, LabelUpdateView
 
 app_name = 'labels'
 

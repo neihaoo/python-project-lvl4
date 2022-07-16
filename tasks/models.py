@@ -1,6 +1,7 @@
 """Tasks application models."""
 
 from django.db import models
+
 from labels.models import Label
 from statuses.models import Status
 from users.models import User
@@ -21,13 +22,13 @@ class Task(models.Model):
     )
     labels = models.ManyToManyField(
         Label,
-        through='TaskLinkToLabel',
+        through='Relationships',
         blank=True,
     )
     created_by = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
-        related_name='author',
+        related_name='created_by',
     )
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -36,7 +37,7 @@ class Task(models.Model):
         return self.name
 
 
-class TaskLinkToLabel(models.Model):
+class Relationships(models.Model):
     """Intermediary model."""
 
     task = models.ForeignKey(Task, on_delete=models.CASCADE)

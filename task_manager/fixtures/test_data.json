@@ -1,62 +1,57 @@
 {
   "users": {
-    "new_user": {
-      "password": "jfsoi3j3",
-      "username": "ted",
-      "first_name": "Ted",
-      "last_name": "Lasso"
+    "new": {
+      "first_name": "Nico",
+      "last_name": "Robbin",
+      "username": "nico",
+      "password1": "jfsoi3j3",
+      "password2": "jfsoi3j3"
     },
-    "existing_user": {
-      "password": "c&f6N57r",
+    "existing": {
+      "pk": 1,
       "username": "luffy",
-      "first_name": "Luffy",
-      "last_name": "D. Monkey"
+      "password": "c&f6N57r"
     },
-    "another_user": {
-      "password": "71s1@nUS",
-      "username": "chopper",
-      "first_name": "Chopper",
-      "last_name": ""
-    },
-    "task_user": {
-      "password": "99#2zIJe",
-      "username": "nami",
-      "first_name": "Nami",
-      "last_name": ""
+    "has_relationships": {
+      "pk": 2,
+      "username": "zorro",
+      "password": "71s1@nUS"
     }
   },
   "statuses": {
-    "new_status": {
-      "name": "Dropped"
+    "new": {
+      "name": "New"
     },
-    "existing_status": {
+    "existing": {
+      "pk": 1,
       "name": "Completed"
     },
-    "another_status": {
-      "name": "On Testing"
+    "has_relationships": {
+      "pk": 2,
+      "name": "In Progress"
     }
   },
   "labels": {
-    "new_label": {
+    "new": {
       "name": "invalid"
     },
-    "existing_label": {
+    "existing": {
+      "pk": 1,
       "name": "question"
     },
-    "another_label": {
+    "has_relationships": {
+      "pk": 2,
       "name": "bug"
     }
   },
   "tasks": {
-    "new_task": {
-      "name": "Testing",
+    "new": {
+      "name": "Finish project",
       "status": 2
     },
-    "existing_task": {
-      "name": "Add task tests"
-    },
-    "another_task": {
-      "name": "Add permission"
+    "existing": {
+      "pk": 1,
+      "name": "Send email"
     }
   }
 }

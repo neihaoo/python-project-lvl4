@@ -1,6 +1,7 @@
 """User application admin interface."""
 
 from django.contrib import admin
+
 from users.models import User
 
 

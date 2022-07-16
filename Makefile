@@ -16,7 +16,7 @@ lint:
 	@poetry run flake8 .
 
 test:
-	@poetry run coverage run --source='.' manage.py test
+	@poetry run coverage run --source='.' manage.py test --parallel
 
 test-coverage-report: test
 	@poetry run coverage report -m

@@ -4,16 +4,19 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+
 from statuses.forms import StatusForm
 from statuses.models import Status
 from task_manager.mixins import ProtectedErrorMixin, UserLoginRequiredMixin
 from users.views import LOGIN_REQUIRED_MESSAGE
 
-CREATION_SUCCESS_MESSAGE = _('Status successfully created')
-UPDATE_SUCCESS_MESSAGE = _('Status successfully changed')
-DELETE_SUCCESS_MESSAGE = _('Status successfully deleted')
+CREATION_SUCCESS_MESSAGE = _('Status successfully created.')
+UPDATE_SUCCESS_MESSAGE = _('Status successfully changed.')
+DELETE_SUCCESS_MESSAGE = _('Status successfully deleted.')
 
-PROTECTED_ERROR_MESSAGE = _('Unable to delete status because it is in use')
+PROTECTED_ERROR_MESSAGE = _(
+    'Unable to delete the status because it is in use.',
+)
 
 
 class IndexView(UserLoginRequiredMixin, ListView):

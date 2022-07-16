@@ -1,12 +1,8 @@
 """Tasks application URL Configuration."""
 
 from django.urls import path
-from tasks.views import (
-    IndexView,
-    TaskCreationView,
-    TaskDeleteView,
-    TaskUpdateView,
-)
+
+from tasks.views import IndexView, TaskCreationView, TaskDeleteView, TaskUpdateView
 
 app_name = 'tasks'
 

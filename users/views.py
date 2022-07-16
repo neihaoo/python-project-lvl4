@@ -7,6 +7,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+
 from task_manager.mixins import (
     NoPermissionMixin,
     ProtectedErrorMixin,
@@ -14,16 +15,16 @@ from task_manager.mixins import (
 )
 from users.forms import UserCreateForm
 
-CREATION_SUCCESS_MESSAGE = _('User successfully registered')
-UPDATE_SUCCESS_MESSAGE = _('User successfully changed')
-DELETE_SUCCESS_MESSAGE = _('User successfully deleted')
+CREATION_SUCCESS_MESSAGE = _('User successfully registered.')
+UPDATE_SUCCESS_MESSAGE = _('User successfully changed.')
+DELETE_SUCCESS_MESSAGE = _('User successfully deleted.')
 
-LOGIN_SUCCESS_MESSAGE = _('You are logged in')
-LOGOUT_SUCCESS_MESSAGE = _('You are unlogged')
+LOGIN_SUCCESS_MESSAGE = _('You are logged in.')
+LOGOUT_SUCCESS_MESSAGE = _('You are unlogged.')
 LOGIN_REQUIRED_MESSAGE = _('You are not logged in! Please log in.')
 
 PERMISSION_DENIED_MESSAGE = _('You have no rights to change another user.')
-PROTECTED_ERROR_MESSAGE = _('Unable to delete a user because they are in use')
+PROTECTED_ERROR_MESSAGE = _('Unable to delete the user because it is in use.')
 
 
 class IndexView(ListView):
