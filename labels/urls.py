@@ -9,6 +9,6 @@ app_name = 'labels'
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('create/', LabelCreationView.as_view(), name='create'),
-    path('create/<int:pk>/update/', LabelUpdateView.as_view(), name='update'),
-    path('create/<int:pk>/delete/', LabelDeleteView.as_view(), name='delete'),
+    path('<int:pk>/update/', LabelUpdateView.as_view(), name='update'),
+    path('<int:pk>/delete/', LabelDeleteView.as_view(), name='delete'),
 ]

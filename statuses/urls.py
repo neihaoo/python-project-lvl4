@@ -14,6 +14,6 @@ app_name = 'statuses'
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('create/', StatusCreationView.as_view(), name='create'),
-    path('create/<int:pk>/update/', StatusUpdateView.as_view(), name='update'),
-    path('create/<int:pk>/delete/', StatusDeleteView.as_view(), name='delete'),
+    path('<int:pk>/update/', StatusUpdateView.as_view(), name='update'),
+    path('<int:pk>/delete/', StatusDeleteView.as_view(), name='delete'),
 ]

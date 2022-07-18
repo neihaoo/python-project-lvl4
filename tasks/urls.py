@@ -9,6 +9,6 @@ app_name = 'tasks'
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('create/', TaskCreationView.as_view(), name='create'),
-    path('create/<int:pk>/update/', TaskUpdateView.as_view(), name='update'),
-    path('create/<int:pk>/delete/', TaskDeleteView.as_view(), name='delete'),
+    path('<int:pk>/update/', TaskUpdateView.as_view(), name='update'),
+    path('<int:pk>/delete/', TaskDeleteView.as_view(), name='delete'),
 ]
