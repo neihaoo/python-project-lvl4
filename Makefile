@@ -2,7 +2,7 @@
 	@cp -n .env.example .env || true
 
 install: .env
-	@poetry install --extras psycopg2-binary
+	@poetry install -E psycopg2
 
 migrate:
 	@poetry run python manage.py migrate
