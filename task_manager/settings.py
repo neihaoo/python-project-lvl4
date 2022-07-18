@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 
 import dj_database_url
+import rollbar
 from dotenv import load_dotenv
 
 # Take environment variables from .env.
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
@@ -142,3 +144,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # The model to use to represent a User
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-user-model
 AUTH_USER_MODEL = 'users.User'
+
+
+# Rollbar
+ROLLBAR = {
+    'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
+    'environment': 'development' if DEBUG else 'production',
+    'branch': 'master',
+    'root': BASE_DIR,
+    'suppress_reinit_warning': True,
+}
+
+rollbar.init(**ROLLBAR)
