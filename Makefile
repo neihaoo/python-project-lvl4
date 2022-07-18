@@ -2,7 +2,7 @@
 	@cp -n .env.example .env || true
 
 install: .env
-	@poetry install -E psycopg2
+	@poetry install
 
 migrate:
 	@poetry run python manage.py migrate
