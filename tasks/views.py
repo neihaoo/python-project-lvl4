@@ -4,8 +4,10 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+from django_filters.views import FilterView
 
 from task_manager.mixins import NoPermissionMixin, UserLoginRequiredMixin
+from tasks.filters import TasktFilter
 from tasks.forms import TaskForm
 from tasks.models import Task
 from users.views import LOGIN_REQUIRED_MESSAGE
@@ -17,19 +19,17 @@ DELETE_SUCCESS_MESSAGE = _('Task successfully deleted.')
 PERMISSION_DENIED_MESSAGE = _('Only the author of the task can delete it.')
 
 
-class IndexView(UserLoginRequiredMixin, ListView):
+class IndexView(UserLoginRequiredMixin, FilterView, ListView):
     """Tasks page view."""
 
     model = Task
+    filterset_class = TasktFilter
+    template_name = 'tasks/task_list.html'
     login_url = reverse_lazy('login')
     login_required_message = LOGIN_REQUIRED_MESSAGE
 
 
-class TaskCreationView(
-    UserLoginRequiredMixin,
-    SuccessMessageMixin,
-    CreateView,
-):
+class TaskCreationView(UserLoginRequiredMixin, SuccessMessageMixin, CreateView):
     """Task creation page view."""
 
     model = Task

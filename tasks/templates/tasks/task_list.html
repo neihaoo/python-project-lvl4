@@ -1,9 +1,23 @@
 {% extends 'layouts/base.html' %}
+{% load bootstrap4 %}
 {% load i18n %}
 
 {% block content %}
   <h1 class="h1 my-4">{% translate "Tasks" %}</h1>
+
   <a href="{% url 'tasks:create' %}">{% translate "Create a task" %}</a>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <form class="form-inline" method="GET">
+        {% bootstrap_form filter.form field_class='mr-4' label_class='mr-2' %}
+        {% buttons %}
+          <button class="btn btn-primary">{% translate "Show" %}</button>
+        {% endbuttons %}
+      </form>
+    </div>
+  </div>
+
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
@@ -29,7 +43,7 @@
           <td>
             <a href="{% url 'tasks:update' task.id  %}">{% translate "Change" %}</a>
             <br>
-            <a href="{% url 'tasks:delete' task.id  %}">{% translate "Delete" %}</a>
+            <a class="text-danger" href="{% url 'tasks:delete' task.id  %}">{% translate "Delete" %}</a>
           </td>
         </tr>
       {% endfor %}

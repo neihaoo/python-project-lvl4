@@ -31,7 +31,7 @@ start:
 secret_key:
 	@poetry run python -c 'from django.core.management import utils; print(utils.get_random_secret_key())'
 
-requirements.txt:
+requirements.txt: poetry.lock
 	@poetry export -f requirements.txt -o requirements.txt -E psycopg2 -E gunicorn
 
 selfcheck:
