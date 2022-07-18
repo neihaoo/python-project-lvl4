@@ -1,1 +1,90 @@
-[{"model": "users.user", "pk": 1, "fields": {"password": "pbkdf2_sha256$320000$hcyI9FQs5IL3tZX7ncDHnc$KzkBVB1nqvCaLcnHFiIVloSbEUiPt76y4C03cmjTV0U=", "last_login": "2022-07-15T08:38:23.889Z", "is_superuser": false, "username": "luffy", "first_name": "", "last_name": "", "email": "", "is_staff": false, "is_active": true, "date_joined": "2022-07-15T08:36:51.654Z", "groups": [], "user_permissions": []}}, {"model": "users.user", "pk": 2, "fields": {"password": "pbkdf2_sha256$320000$CliFjP6NWfZJ1ccTWNT5ic$W4IGTJBdIdolLKyaeLAgFspZWpOKDb5tUgdvcwTmMtA=", "last_login": "2022-07-15T08:42:07.423Z", "is_superuser": false, "username": "zorro", "first_name": "", "last_name": "", "email": "", "is_staff": false, "is_active": true, "date_joined": "2022-07-15T08:37:12.498Z", "groups": [], "user_permissions": []}}, {"model": "statuses.status", "pk": 1, "fields": {"name": "Completed", "created_at": "2022-07-15T08:38:39.960Z"}}, {"model": "statuses.status", "pk": 2, "fields": {"name": "In Progress", "created_at": "2022-07-15T08:42:20.082Z"}}, {"model": "labels.label", "pk": 1, "fields": {"name": "question", "created_at": "2022-07-15T08:38:54.765Z"}}, {"model": "labels.label", "pk": 2, "fields": {"name": "bug", "created_at": "2022-07-15T08:42:29.205Z"}}, {"model": "tasks.task", "pk": 1, "fields": {"name": "Send email", "description": "", "status": 2, "executor": null, "created_by": 2, "created_at": "2022-07-15T08:43:03.947Z"}}, {"model": "tasks.relationships", "pk": 1, "fields": {"task": 1, "label": 2}}]
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$hcyI9FQs5IL3tZX7ncDHnc$KzkBVB1nqvCaLcnHFiIVloSbEUiPt76y4C03cmjTV0U=",
+      "last_login": "2022-07-15T08:38:23.889Z",
+      "is_superuser": false,
+      "username": "luffy",
+      "first_name": "Luffy",
+      "last_name": "Monkey D.",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-07-15T08:36:51.654Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$CliFjP6NWfZJ1ccTWNT5ic$W4IGTJBdIdolLKyaeLAgFspZWpOKDb5tUgdvcwTmMtA=",
+      "last_login": "2022-07-15T08:42:07.423Z",
+      "is_superuser": false,
+      "username": "zorro",
+      "first_name": "Zorro",
+      "last_name": "Roronoa",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-07-15T08:37:12.498Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "statuses.status",
+    "pk": 1,
+    "fields": {
+      "name": "Completed",
+      "created_at": "2022-07-15T08:38:39.960Z"
+    }
+  },
+  {
+    "model": "statuses.status",
+    "pk": 2,
+    "fields": {
+      "name": "In Progress",
+      "created_at": "2022-07-15T08:42:20.082Z"
+    }
+  },
+  {
+    "model": "labels.label",
+    "pk": 1,
+    "fields": {
+      "name": "question",
+      "created_at": "2022-07-15T08:38:54.765Z"
+    }
+  },
+  {
+    "model": "labels.label",
+    "pk": 2,
+    "fields": {
+      "name": "bug",
+      "created_at": "2022-07-15T08:42:29.205Z"
+    }
+  },
+  {
+    "model": "tasks.task",
+    "pk": 1,
+    "fields": {
+      "name": "Send email",
+      "description": "Send email to World Dovt.",
+      "status": 2,
+      "executor": null,
+      "created_by": 2,
+      "created_at": "2022-07-15T08:43:03.947Z"
+    }
+  },
+  {
+    "model": "tasks.relationships",
+    "pk": 1,
+    "fields": {
+      "task": 1,
+      "label": 2
+    }
+  }
+]

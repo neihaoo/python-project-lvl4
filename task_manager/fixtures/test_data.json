@@ -51,7 +51,8 @@
     },
     "existing": {
       "pk": 1,
-      "name": "Send email"
+      "name": "Send email",
+      "description": "Send email to World Dovt."
     }
   }
 }

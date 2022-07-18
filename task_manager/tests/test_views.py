@@ -16,7 +16,7 @@ from task_manager.misc import get_test_data
 from task_manager.views import IndexView
 from tasks.models import Task
 from tasks.views import IndexView as TaskIndexView
-from tasks.views import TaskCreationView, TaskDeleteView, TaskUpdateView
+from tasks.views import TaskCreationView, TaskDeleteView, TaskDetailView, TaskUpdateView
 from users.models import User
 from users.views import IndexView as UserIndexView
 from users.views import UserCreationView, UserDeleteView, UserLoginView, UserUpdateView
@@ -32,6 +32,8 @@ task = test_data['tasks']['existing']
 class ViewsTest(TestCase):
     """Views tests."""
 
+    fixtures = ['data.json']
+
     def test_index_page(self):
         response = self.client.get(reverse_lazy('index'))
 
@@ -40,6 +42,19 @@ class ViewsTest(TestCase):
         self.assertEqual(
             response.resolver_match.func.__name__,
             IndexView.as_view().__name__,
+        )
+
+    def test_task_detal_view(self):
+        self.client.login(username=user['username'], password=user['password'])
+
+        response = self.client.get(reverse_lazy('tasks:detail', args=[task['pk']]))
+
+        self.assertIn(task['description'], response.rendered_content)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+        self.assertTemplateUsed(response, 'tasks/task_detail.html')
+        self.assertEqual(
+            response.resolver_match.func.__name__,
+            TaskDetailView.as_view().__name__,
         )
 
     def test_login_page(self):

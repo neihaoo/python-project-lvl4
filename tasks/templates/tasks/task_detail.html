@@ -1,0 +1,56 @@
+{% extends 'layouts/base.html' %}
+{% load i18n %}
+
+{% block content %}
+  <h1 class="h1 my-4">{% translate "View task" %}</h1>
+
+  <div class="card border mb-3">
+    <div class="card-header bg-white shadow-sm">
+      <h5 class="m-0 p-2">{{ task.name }}</h5>
+    </div>
+    <div class="card-body">
+      {% if task.description %}
+        <p class="card-text">{{ task.description }}</p>
+        <hr>
+      {% endif %}
+      <div class="container">
+        <div class="row p-1">
+          <div class="col">{% translate "Author" %}</div>
+          <div class="col">{{ task.created_by }}</div>
+        </div>
+        <div class="row p-1">
+          <div class="col">{% translate "Executor" %}</div>
+          <div class="col">{{ task.executor }}</div>
+        </div>
+        <div class="row p-1">
+          <div class="col">{% translate "Status" %}</div>
+          <div class="col">{{ task.status }}</div>
+        </div>
+        <div class="row p-1">
+          <div class="col">{% translate "Creation date" %}</div>
+          <div class="col">{{ task.created_at }}</div>
+        </div>
+        <div class="row p-1">
+          <div class="col">
+           {% translate "Labels" %}:
+            <ul>
+              {% for label in task.labels.all %}
+              <li>{{ label }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer bg-white">
+      <div class="row p-1">
+        <div class="col text-center">
+          <a href="{% url 'tasks:update' task.id  %}">{% translate "Change" %}</a>
+        </div>
+        <div class="col text-center">
+          <a class="text-danger" href="{% url 'tasks:delete' task.id  %}">{% translate "Delete" %}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

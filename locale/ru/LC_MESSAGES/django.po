@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-18 21:55+0300\n"
+"POT-Creation-Date: 2022-07-18 23:45+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,6 +29,7 @@ msgstr "Имя"
 #: labels/templates/labels/label_list.html:5
 #: task_manager/templates/layouts/base.html:45
 #: task_manager/templates/layouts/base.html:47 tasks/models.py:33
+#: tasks/templates/tasks/task_detail.html:36
 msgid "Labels"
 msgstr "Метки"
 
@@ -38,6 +39,7 @@ msgstr "Создать метку"
 
 #: labels/templates/labels/label_list.html:13
 #: statuses/templates/statuses/status_list.html:13
+#: tasks/templates/tasks/task_detail.html:31
 #: tasks/templates/tasks/task_list.html:30
 #: users/templates/users/user_list.html:13
 msgid "Creation date"
@@ -45,14 +47,16 @@ msgstr "Дата создания"
 
 #: labels/templates/labels/label_list.html:24 labels/views.py:64
 #: statuses/templates/statuses/status_list.html:24 statuses/views.py:66
-#: tasks/templates/tasks/task_list.html:44 tasks/views.py:65
+#: tasks/templates/tasks/task_detail.html:49
+#: tasks/templates/tasks/task_list.html:46 tasks/views.py:80
 #: users/templates/users/user_list.html:25 users/views.py:69
 msgid "Change"
 msgstr "Изменить"
 
 #: labels/templates/labels/label_list.html:26
 #: statuses/templates/statuses/status_list.html:26
-#: tasks/templates/tasks/task_list.html:46
+#: tasks/templates/tasks/task_detail.html:52
+#: tasks/templates/tasks/task_list.html:48
 #: users/templates/users/user_list.html:27
 msgid "Delete"
 msgstr "Удалить"
@@ -73,7 +77,7 @@ msgstr "Метка успешно удалена."
 msgid "Unable to delete the label because it is in use."
 msgstr "Невозможно удалить метку, потому что она используется."
 
-#: labels/views.py:44 statuses/views.py:46 tasks/views.py:44
+#: labels/views.py:44 statuses/views.py:46 tasks/views.py:59
 msgid "Create"
 msgstr "Создать"
 
@@ -85,7 +89,7 @@ msgstr "Изменение метки"
 msgid "Label deletion"
 msgstr "Удаление метки"
 
-#: labels/views.py:86 statuses/views.py:88 tasks/views.py:87 users/views.py:99
+#: labels/views.py:86 statuses/views.py:88 tasks/views.py:102 users/views.py:99
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
@@ -180,15 +184,26 @@ msgstr "Только свои задачи"
 msgid "Description"
 msgstr "Описание"
 
-#: tasks/models.py:19 tasks/templates/tasks/task_list.html:27
+#: tasks/models.py:19 tasks/templates/tasks/task_detail.html:27
+#: tasks/templates/tasks/task_list.html:27
 msgid "Status"
 msgstr "Статус"
 
-#: tasks/models.py:27 tasks/templates/tasks/task_list.html:29
+#: tasks/models.py:27 tasks/templates/tasks/task_detail.html:23
+#: tasks/templates/tasks/task_list.html:29
 msgid "Executor"
 msgstr "Исполнитель"
 
-#: tasks/templates/tasks/task_list.html:8 tasks/views.py:43
+#: tasks/templates/tasks/task_detail.html:6
+msgid "View task"
+msgstr "Просмотр задачи"
+
+#: tasks/templates/tasks/task_detail.html:19
+#: tasks/templates/tasks/task_list.html:28
+msgid "Author"
+msgstr "Автор"
+
+#: tasks/templates/tasks/task_list.html:8 tasks/views.py:58
 msgid "Create a task"
 msgstr "Создать задачу"
 
@@ -196,31 +211,27 @@ msgstr "Создать задачу"
 msgid "Show"
 msgstr "Показать"
 
-#: tasks/templates/tasks/task_list.html:28
-msgid "Author"
-msgstr "Автор"
-
-#: tasks/views.py:15
+#: tasks/views.py:21
 msgid "Task successfully created."
 msgstr "Задача успешно создана."
 
-#: tasks/views.py:16
+#: tasks/views.py:22
 msgid "Task successfully changed."
 msgstr "Задача успешно изменена."
 
-#: tasks/views.py:17
+#: tasks/views.py:23
 msgid "Task successfully deleted."
 msgstr "Задача успешно удалена."
 
-#: tasks/views.py:19
+#: tasks/views.py:25
 msgid "Only the author of the task can delete it."
 msgstr "Задачу может удалить только её автор."
 
-#: tasks/views.py:64
+#: tasks/views.py:79
 msgid "Changing task"
 msgstr "Изменение задачи"
 
-#: tasks/views.py:86
+#: tasks/views.py:101
 msgid "Task deletion"
 msgstr "Удаление задачи"
 

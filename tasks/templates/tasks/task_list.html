@@ -35,7 +35,9 @@
       {% for task in task_list %}
         <tr>
           <th scope="row">{{ task.id }}</th>
-          <td>{{ task.name }}</td>
+          <td>
+            <a href="{% url 'tasks:detail' task.id  %}">{{ task.name }}</a>
+          </td>
           <td>{{ task.status }}</td>
           <td>{{ task.created_by }}</td>
           <td>{% if task.executor %}{{ task.executor }}{% endif %}</td>
