@@ -117,7 +117,7 @@ msgstr "Невозможно удалить статус, потому что о
 
 #: statuses/views.py:65
 msgid "Changing status"
-msgstr "Изменение статуса."
+msgstr "Изменение статуса"
 
 #: statuses/views.py:87
 msgid "Status deletion"
