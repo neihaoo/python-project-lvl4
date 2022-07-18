@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-18 06:48+0300\n"
+"POT-Creation-Date: 2022-07-18 21:55+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: labels/models.py:10 labels/templates/labels/label_list.html:12
 #: statuses/models.py:10 statuses/templates/statuses/status_list.html:12
-#: tasks/models.py:14 tasks/templates/tasks/task_list.html:26
+#: tasks/models.py:14 tasks/templates/tasks/task_list.html:26 users/forms.py:17
 msgid "Name"
 msgstr "Имя"
 
@@ -223,6 +223,10 @@ msgstr "Изменение задачи"
 #: tasks/views.py:86
 msgid "Task deletion"
 msgstr "Удаление задачи"
+
+#: users/forms.py:22
+msgid "Surname"
+msgstr "Фамилия"
 
 #: users/templates/users/user_list.html:11
 msgid "Username"
