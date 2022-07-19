@@ -81,6 +81,7 @@ class PermissionDeniedTest(TestCase):
         ('tasks:create', None),
         ('tasks:update', [task['pk']]),
         ('tasks:delete', [task['pk']]),
+        ('tasks:detail', [task['pk']]),
     ],
 )
 class LoginRequiredTest(TestCase):
