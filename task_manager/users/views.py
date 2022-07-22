@@ -4,7 +4,6 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
@@ -45,12 +44,6 @@ class UserCreationView(SuccessMessageMixin, CreateView):
         'header': _('Registration'),
         'button': _('Register'),
     }
-
-    def get(self, request, *args, **kwargs):
-        if self.request.user.is_authenticated:
-            return redirect(reverse_lazy('index'))
-
-        return super().get(request, *args, **kwargs)
 
 
 class UserUpdateView(
