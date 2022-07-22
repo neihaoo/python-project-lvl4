@@ -5,23 +5,47 @@ from django.test import TestCase
 from django.urls import reverse_lazy
 from parameterized import parameterized_class
 
-from labels.models import Label
-from labels.views import CREATION_SUCCESS_MESSAGE as LABEL_CREATION_SUCCESS_MESSAGE
-from labels.views import DELETE_SUCCESS_MESSAGE as LABEL_DELETE_SUCCESS_MESSAGE
-from labels.views import UPDATE_SUCCESS_MESSAGE as LABEL_UPDATE_SUCCESS_MESSAGE
-from statuses.models import Status
-from statuses.views import CREATION_SUCCESS_MESSAGE as STATUS_CREATION_SUCCESS_MESSAGE
-from statuses.views import DELETE_SUCCESS_MESSAGE as STATUS_DELETE_SUCCESS_MESSAGE
-from statuses.views import UPDATE_SUCCESS_MESSAGE as STATUS_UPDATE_SUCCESS_MESSAGE
+from task_manager.labels.models import Label
+from task_manager.labels.views import (
+    CREATION_SUCCESS_MESSAGE as LABEL_CREATION_SUCCESS_MESSAGE,
+)
+from task_manager.labels.views import (
+    DELETE_SUCCESS_MESSAGE as LABEL_DELETE_SUCCESS_MESSAGE,
+)
+from task_manager.labels.views import (
+    UPDATE_SUCCESS_MESSAGE as LABEL_UPDATE_SUCCESS_MESSAGE,
+)
 from task_manager.misc import get_response_messages, get_test_data
-from tasks.models import Task
-from tasks.views import CREATION_SUCCESS_MESSAGE as TASK_CREATION_SUCCESS_MESSAGE
-from tasks.views import DELETE_SUCCESS_MESSAGE as TASK_DELETE_SUCCESS_MESSAGE
-from tasks.views import UPDATE_SUCCESS_MESSAGE as TASK_UPDATE_SUCCESS_MESSAGE
-from users.models import User
-from users.views import CREATION_SUCCESS_MESSAGE as USER_CREATION_SUCCESS_MESSAGE
-from users.views import DELETE_SUCCESS_MESSAGE as USER_DELETE_SUCCESS_MESSAGE
-from users.views import UPDATE_SUCCESS_MESSAGE as USER_UPDATE_SUCCESS_MESSAGE
+from task_manager.statuses.models import Status
+from task_manager.statuses.views import (
+    CREATION_SUCCESS_MESSAGE as STATUS_CREATION_SUCCESS_MESSAGE,
+)
+from task_manager.statuses.views import (
+    DELETE_SUCCESS_MESSAGE as STATUS_DELETE_SUCCESS_MESSAGE,
+)
+from task_manager.statuses.views import (
+    UPDATE_SUCCESS_MESSAGE as STATUS_UPDATE_SUCCESS_MESSAGE,
+)
+from task_manager.tasks.models import Task
+from task_manager.tasks.views import (
+    CREATION_SUCCESS_MESSAGE as TASK_CREATION_SUCCESS_MESSAGE,
+)
+from task_manager.tasks.views import (
+    DELETE_SUCCESS_MESSAGE as TASK_DELETE_SUCCESS_MESSAGE,
+)
+from task_manager.tasks.views import (
+    UPDATE_SUCCESS_MESSAGE as TASK_UPDATE_SUCCESS_MESSAGE,
+)
+from task_manager.users.models import User
+from task_manager.users.views import (
+    CREATION_SUCCESS_MESSAGE as USER_CREATION_SUCCESS_MESSAGE,
+)
+from task_manager.users.views import (
+    DELETE_SUCCESS_MESSAGE as USER_DELETE_SUCCESS_MESSAGE,
+)
+from task_manager.users.views import (
+    UPDATE_SUCCESS_MESSAGE as USER_UPDATE_SUCCESS_MESSAGE,
+)
 
 test_data = get_test_data()
 

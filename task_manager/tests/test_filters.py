@@ -4,7 +4,7 @@ from django.test import TestCase
 from django.urls import reverse_lazy
 
 from task_manager.misc import get_test_data
-from tasks.models import Task
+from task_manager.tasks.models import Task
 
 
 class TaskFilterTest(TestCase):

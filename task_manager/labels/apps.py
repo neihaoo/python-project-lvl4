@@ -7,4 +7,4 @@ class LabelsConfig(AppConfig):
     """Labels config."""
 
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'labels'
+    name = 'task_manager.labels'

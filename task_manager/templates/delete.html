@@ -3,14 +3,7 @@
 
 {% block content %}
   <h1>{{ header }}</h1>
-  <p>
-    {% translate "Are you sure you want to delete" %}
-    {% if object.first_name or object.last_name %}
-    {{ object.get_full_name }}?
-    {% else %}
-    {{ object }}?
-    {% endif %}
-  </p>
+  <p>{% translate "Are you sure you want to delete" %} {{ object }}?</p>
   <form method="POST">
     {% csrf_token %}
     <button class="btn btn-danger">{{ button }}</button>

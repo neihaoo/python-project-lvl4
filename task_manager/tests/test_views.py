@@ -6,20 +6,38 @@ from django.test import TestCase
 from django.urls import reverse_lazy
 from parameterized import parameterized_class
 
-from labels.models import Label
-from labels.views import IndexView as LabelIndexView
-from labels.views import LabelCreationView, LabelDeleteView, LabelUpdateView
-from statuses.models import Status
-from statuses.views import IndexView as StatusIndexView
-from statuses.views import StatusCreationView, StatusDeleteView, StatusUpdateView
+from task_manager.labels.models import Label
+from task_manager.labels.views import IndexView as LabelIndexView
+from task_manager.labels.views import (
+    LabelCreationView,
+    LabelDeleteView,
+    LabelUpdateView,
+)
 from task_manager.misc import get_test_data
+from task_manager.statuses.models import Status
+from task_manager.statuses.views import IndexView as StatusIndexView
+from task_manager.statuses.views import (
+    StatusCreationView,
+    StatusDeleteView,
+    StatusUpdateView,
+)
+from task_manager.tasks.models import Task
+from task_manager.tasks.views import IndexView as TaskIndexView
+from task_manager.tasks.views import (
+    TaskCreationView,
+    TaskDeleteView,
+    TaskDetailView,
+    TaskUpdateView,
+)
+from task_manager.users.models import User
+from task_manager.users.views import IndexView as UserIndexView
+from task_manager.users.views import (
+    UserCreationView,
+    UserDeleteView,
+    UserLoginView,
+    UserUpdateView,
+)
 from task_manager.views import IndexView
-from tasks.models import Task
-from tasks.views import IndexView as TaskIndexView
-from tasks.views import TaskCreationView, TaskDeleteView, TaskDetailView, TaskUpdateView
-from users.models import User
-from users.views import IndexView as UserIndexView
-from users.views import UserCreationView, UserDeleteView, UserLoginView, UserUpdateView
 
 test_data = get_test_data()
 
@@ -123,15 +141,23 @@ class ListPageTest(TestCase):
         )
 
 
+class UserCreateViewTest(TestCase):
+    """User create pages view test."""
+
+    def test_crud_page(self):
+        response = self.client.get(reverse_lazy('users:create'))
+
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+        self.assertTemplateUsed(response, 'layouts/form.html')
+        self.assertEqual(
+            response.resolver_match.func.__name__,
+            UserCreationView.as_view().__name__,
+        )
+
+
 @parameterized_class(
     ('url', 'id', 'template', 'view'),
     [
-        (
-            'users:create',
-            None,
-            'layouts/form.html',
-            UserCreationView,
-        ),
         (
             'users:update',
             [user['pk']],

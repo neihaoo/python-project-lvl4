@@ -2,7 +2,7 @@
 
 from django.contrib import admin
 
-from statuses.models import Status
+from task_manager.statuses.models import Status
 
 
 @admin.register(Status)

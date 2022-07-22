@@ -4,13 +4,23 @@ from django.test import TestCase
 from django.urls import reverse_lazy
 from parameterized import parameterized_class
 
-from labels.views import PROTECTED_ERROR_MESSAGE as LABELS_PROTECTED_ERROR_MESSAGE
-from statuses.views import PROTECTED_ERROR_MESSAGE as STATUSES_PROTECTED_ERROR_MESSAGE
+from task_manager.labels.views import (
+    PROTECTED_ERROR_MESSAGE as LABELS_PROTECTED_ERROR_MESSAGE,
+)
 from task_manager.misc import get_response_messages, get_test_data
-from tasks.views import PERMISSION_DENIED_MESSAGE as TASKS_PERMISSION_DENIED_MESSAGE
-from users.views import LOGIN_REQUIRED_MESSAGE
-from users.views import PERMISSION_DENIED_MESSAGE as USERS_PERMISSION_DENIED_MESSAGE
-from users.views import PROTECTED_ERROR_MESSAGE as USERS_PROTECTED_ERROR_MESSAGE
+from task_manager.mixins import LOGIN_REQUIRED_MESSAGE
+from task_manager.statuses.views import (
+    PROTECTED_ERROR_MESSAGE as STATUSES_PROTECTED_ERROR_MESSAGE,
+)
+from task_manager.tasks.views import (
+    PERMISSION_DENIED_MESSAGE as TASKS_PERMISSION_DENIED_MESSAGE,
+)
+from task_manager.users.views import (
+    PERMISSION_DENIED_MESSAGE as USERS_PERMISSION_DENIED_MESSAGE,
+)
+from task_manager.users.views import (
+    PROTECTED_ERROR_MESSAGE as USERS_PROTECTED_ERROR_MESSAGE,
+)
 
 test_data = get_test_data()
 

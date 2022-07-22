@@ -7,4 +7,4 @@ class TasksConfig(AppConfig):
     """Tasks config."""
 
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'tasks'
+    name = 'task_manager.tasks'

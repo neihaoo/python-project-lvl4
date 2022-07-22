@@ -2,7 +2,7 @@
 
 from django.urls import path
 
-from statuses.views import (
+from task_manager.statuses.views import (
     IndexView,
     StatusCreationView,
     StatusDeleteView,

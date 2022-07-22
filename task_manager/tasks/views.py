@@ -13,10 +13,9 @@ from django.views.generic import (
 from django_filters.views import FilterView
 
 from task_manager.mixins import NoPermissionMixin, UserLoginRequiredMixin
-from tasks.filters import TasktFilter
-from tasks.forms import TaskForm
-from tasks.models import Task
-from users.views import LOGIN_REQUIRED_MESSAGE
+from task_manager.tasks.filters import TasktFilter
+from task_manager.tasks.forms import TaskForm
+from task_manager.tasks.models import Task
 
 CREATION_SUCCESS_MESSAGE = _('Task successfully created.')
 UPDATE_SUCCESS_MESSAGE = _('Task successfully changed.')
@@ -31,16 +30,12 @@ class IndexView(UserLoginRequiredMixin, FilterView, ListView):
     model = Task
     filterset_class = TasktFilter
     template_name = 'tasks/task_list.html'
-    login_url = reverse_lazy('login')
-    login_required_message = LOGIN_REQUIRED_MESSAGE
 
 
 class TaskDetailView(UserLoginRequiredMixin, DetailView):
     """Tasks detail view."""
 
     model = Task
-    login_url = reverse_lazy('login')
-    login_required_message = LOGIN_REQUIRED_MESSAGE
 
 
 class TaskCreationView(UserLoginRequiredMixin, SuccessMessageMixin, CreateView):
@@ -49,9 +44,7 @@ class TaskCreationView(UserLoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Task
     form_class = TaskForm
     template_name = 'layouts/form.html'
-    login_url = reverse_lazy('login')
     success_url = reverse_lazy('tasks:index')
-    login_required_message = LOGIN_REQUIRED_MESSAGE
     success_message = CREATION_SUCCESS_MESSAGE
     extra_context = {
         'header': _('Create a task'),
@@ -70,9 +63,7 @@ class TaskUpdateView(UserLoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Task
     form_class = TaskForm
     template_name = 'layouts/form.html'
-    login_url = reverse_lazy('login')
     success_url = reverse_lazy('tasks:index')
-    login_required_message = LOGIN_REQUIRED_MESSAGE
     success_message = UPDATE_SUCCESS_MESSAGE
     extra_context = {
         'header': _('Changing task'),
@@ -90,10 +81,8 @@ class TaskDeleteView(
 
     model = Task
     template_name = 'delete.html'
-    login_url = reverse_lazy('login')
     success_url = reverse_lazy('tasks:index')
     permission_denied_url = reverse_lazy('tasks:index')
-    login_required_message = LOGIN_REQUIRED_MESSAGE
     success_message = DELETE_SUCCESS_MESSAGE
     permission_denied_message = PERMISSION_DENIED_MESSAGE
     extra_context = {

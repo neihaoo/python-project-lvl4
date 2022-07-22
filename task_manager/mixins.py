@@ -4,6 +4,10 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models.deletion import ProtectedError
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+
+LOGIN_REQUIRED_MESSAGE = _('You are not logged in! Please log in.')
 
 
 class ProtectedErrorMixin(object):
@@ -26,7 +30,8 @@ class ProtectedErrorMixin(object):
 class UserLoginRequiredMixin(LoginRequiredMixin):
     """Verify that the current user is authenticated."""
 
-    login_required_message = ''
+    login_url = reverse_lazy('login')
+    login_required_message = LOGIN_REQUIRED_MESSAGE
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:

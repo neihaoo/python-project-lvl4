@@ -29,10 +29,6 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
 # Application definition
 
 INSTALLED_APPS = [
-    'users.apps.UsersConfig',
-    'statuses.apps.StatusesConfig',
-    'labels.apps.LabelsConfig',
-    'tasks.apps.TasksConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +38,10 @@ INSTALLED_APPS = [
     'bootstrap4',
     'django_filters',
     'task_manager',
+    'task_manager.users',
+    'task_manager.statuses',
+    'task_manager.labels',
+    'task_manager.tasks',
 ]
 
 MIDDLEWARE = [

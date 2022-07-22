@@ -7,4 +7,4 @@ class UsersConfig(AppConfig):
     """Users config."""
 
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'users'
+    name = 'task_manager.users'

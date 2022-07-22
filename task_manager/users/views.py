@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
@@ -13,7 +14,7 @@ from task_manager.mixins import (
     ProtectedErrorMixin,
     UserLoginRequiredMixin,
 )
-from users.forms import UserCreateForm
+from task_manager.users.forms import UserCreateForm
 
 CREATION_SUCCESS_MESSAGE = _('User successfully registered.')
 UPDATE_SUCCESS_MESSAGE = _('User successfully changed.')
@@ -21,7 +22,6 @@ DELETE_SUCCESS_MESSAGE = _('User successfully deleted.')
 
 LOGIN_SUCCESS_MESSAGE = _('You are logged in.')
 LOGOUT_SUCCESS_MESSAGE = _('You are unlogged.')
-LOGIN_REQUIRED_MESSAGE = _('You are not logged in! Please log in.')
 
 PERMISSION_DENIED_MESSAGE = _('You have no rights to change another user.')
 PROTECTED_ERROR_MESSAGE = _('Unable to delete the user because it is in use.')
@@ -46,6 +46,12 @@ class UserCreationView(SuccessMessageMixin, CreateView):
         'button': _('Register'),
     }
 
+    def get(self, request, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return redirect(reverse_lazy('index'))
+
+        return super().get(request, *args, **kwargs)
+
 
 class UserUpdateView(
     UserLoginRequiredMixin,
@@ -58,11 +64,9 @@ class UserUpdateView(
     model = get_user_model()
     form_class = UserCreateForm
     template_name = 'layouts/form.html'
-    login_url = reverse_lazy('login')
     success_url = reverse_lazy('users:index')
     success_message = UPDATE_SUCCESS_MESSAGE
     permission_denied_url = reverse_lazy('users:index')
-    login_required_message = LOGIN_REQUIRED_MESSAGE
     permission_denied_message = PERMISSION_DENIED_MESSAGE
     extra_context = {
         'header': _('Changing the user'),
@@ -87,11 +91,9 @@ class UserDeleteView(
     model = get_user_model()
     template_name = 'delete.html'
     success_url = reverse_lazy('users:index')
-    login_url = reverse_lazy('login')
     protected_error_url = reverse_lazy('users:index')
     success_message = DELETE_SUCCESS_MESSAGE
     permission_denied_url = reverse_lazy('users:index')
-    login_required_message = LOGIN_REQUIRED_MESSAGE
     permission_denied_message = PERMISSION_DENIED_MESSAGE
     protected_error_message = PROTECTED_ERROR_MESSAGE
     extra_context = {
@@ -110,6 +112,7 @@ class UserLoginView(SuccessMessageMixin, LoginView):
 
     template_name = 'layouts/form.html'
     next_page = reverse_lazy('index')
+    redirect_authenticated_user = True
     success_url = reverse_lazy('users:index')
     success_message = LOGIN_SUCCESS_MESSAGE
     extra_context = {

@@ -4,7 +4,7 @@ from django.test import TestCase
 from django.urls import reverse_lazy
 
 from task_manager.misc import get_response_messages, get_test_data
-from users.views import LOGIN_SUCCESS_MESSAGE, LOGOUT_SUCCESS_MESSAGE
+from task_manager.users.views import LOGIN_SUCCESS_MESSAGE, LOGOUT_SUCCESS_MESSAGE
 
 
 class UserAuthenticationTest(TestCase):
