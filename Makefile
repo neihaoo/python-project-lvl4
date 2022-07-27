@@ -7,13 +7,13 @@ install: .env
 migrate:
 	@poetry run python manage.py migrate
 
-setup: install migrate
+collectstatic:
+	@poetry run python manage.py collectstatic --no-input
+
+setup: install migrate collectstatic
 
 shell:
 	@poetry run python manage.py shell
-
-collectstatic:
-	@poetry run python manage.py collectstatic --no-input
 
 lint:
 	@poetry run flake8 .
