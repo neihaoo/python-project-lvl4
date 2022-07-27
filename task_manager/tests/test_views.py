@@ -141,23 +141,15 @@ class ListPageTest(TestCase):
         )
 
 
-class UserCreateViewTest(TestCase):
-    """User create pages view test."""
-
-    def test_crud_page(self):
-        response = self.client.get(reverse_lazy('users:create'))
-
-        self.assertEqual(response.status_code, HTTPStatus.OK)
-        self.assertTemplateUsed(response, 'layouts/form.html')
-        self.assertEqual(
-            response.resolver_match.func.__name__,
-            UserCreationView.as_view().__name__,
-        )
-
-
 @parameterized_class(
     ('url', 'id', 'template', 'view'),
     [
+        (
+            'users:create',
+            None,
+            'layouts/form.html',
+            UserCreationView,
+        ),
         (
             'users:update',
             [user['pk']],
