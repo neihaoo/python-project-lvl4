@@ -7,6 +7,12 @@ install: .env
 migrate:
 	@poetry run python manage.py migrate
 
+transprepare:
+	@poetry run django-admin makemessages -l ru
+
+transcompile:
+	@poetry run django-admin compilemessages
+
 collectstatic:
 	@poetry run python manage.py collectstatic --no-input
 
@@ -45,4 +51,4 @@ check: selfcheck lint test requirements.txt
 deploy: check
 	git push heroku main
 
-.PHONY: install setup lint test check start
+.PHONY: install setup shell lint test check start
