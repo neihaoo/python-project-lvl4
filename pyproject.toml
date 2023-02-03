@@ -10,7 +10,7 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-Django = "^4.0.8"
+Django = "^4.0.9"
 python-dotenv = "^0.20.0"
 dj-database-url = "^0.5.0"
 gunicorn = {version = "^20.1.0", optional = true}
