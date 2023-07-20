@@ -48,7 +48,9 @@ selfcheck:
 
 check: selfcheck lint test requirements.txt
 
-deploy: check
-	git push heroku main
+build:
+	@pip install -r requirements.txt
+	@poetry run python manage.py migrate
+	@poetry run python manage.py collectstatic --no-input
 
 .PHONY: install setup shell lint test check start
